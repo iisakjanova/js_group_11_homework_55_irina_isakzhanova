@@ -12,10 +12,44 @@ const App = () => {
         {name: 'Bacon', count: 0, id: nanoid(),},
     ]);
 
+    const increaseCount = id => {
+        setIngredients(prevIngredients => prevIngredients.map((ingredient) => {
+            if (ingredient.id === id) {
+                return {...ingredient, count: ingredient.count + 1}
+            }
+
+            return ingredient;
+        }))
+    };
+
+    const decreaseCount = id => {
+        setIngredients(prevIngredients => prevIngredients.map((ingredient) => {
+            if (ingredient.id === id) {
+                const count = ingredient.count !== 0 ? ingredient.count - 1 : 0;
+                return {...ingredient, count}
+            }
+
+            return ingredient;
+        }))
+    };
+
+    const removeIngredient = id => {
+        setIngredients(prevIngredients => prevIngredients.map((ingredient) => {
+            if (ingredient.id === id) {
+                return {...ingredient, count: 0}
+            }
+
+            return ingredient;
+        }))
+    };
+
     return (
         <div className="App">
             <Ingredients
                 ingredients={ingredients}
+                onIncrease={increaseCount}
+                onDecrease={decreaseCount}
+                onRemove={removeIngredient}
             />
         </div>
     );

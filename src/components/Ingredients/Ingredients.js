@@ -1,5 +1,4 @@
 import React from 'react';
-import './Ingredients.css';
 import Ingredient from "../Ingredient/Ingredient";
 
 const Ingredients = props => {
@@ -11,6 +10,9 @@ const Ingredients = props => {
                     <Ingredient
                         key={ingredient.id}
                         ingredient={ingredient}
+                        onIncrease={props.onIncrease}
+                        onDecrease={props.onDecrease}
+                        onRemove={props.onRemove}
                     />
                 ))}
             </fieldset>
