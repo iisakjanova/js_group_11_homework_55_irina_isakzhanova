@@ -3,6 +3,7 @@ import {nanoid} from "nanoid";
 
 import Ingredients from "./components/Ingredients/Ingredients";
 import './App.css'
+import Burger from "./components/Burger/Burger";
 
 const App = () => {
     const [ingredients, setIngredients] = useState([
@@ -51,6 +52,7 @@ const App = () => {
                 onDecrease={decreaseCount}
                 onRemove={removeIngredient}
             />
+            <Burger />
         </div>
     );
 };
