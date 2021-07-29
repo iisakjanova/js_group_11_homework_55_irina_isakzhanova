@@ -1,26 +1,24 @@
 import {useState} from "react";
+import {nanoid} from "nanoid";
 
-import meatImage from './assets/meat.jpeg';
-import cheeseImage from './assets/cheese.jpeg';
-import saladImage from './assets/salad.jpeg';
-import baconImage from './assets/bacon.jpeg';
+import Ingredients from "./components/Ingredients/Ingredients";
+import './App.css'
 
-const INGREDIENTS = [
-    {name: 'meat', price: 50, image: meatImage,},
-    {name: 'cheese', price: 20, image: cheeseImage,},
-    {name: 'salad', price: 20, image: saladImage,},
-    {name: 'bacon', price: 20, image: baconImage,},
-];
+
 const App = () => {
     const [ingredients, setIngredients] = useState([
-        {name: 'meat', count: 0,},
-        {name: 'cheese', count: 0,},
-        {name: 'salad', count: 0,},
-        {name: 'bacon', count: 0,},
+        {name: 'Meat', count: 0, id: nanoid(),},
+        {name: 'Cheese', count: 0, id: nanoid(),},
+        {name: 'Salad', count: 0, id: nanoid(),},
+        {name: 'Bacon', count: 0, id: nanoid(),},
     ]);
 
     return (
-        <div className="App"></div>
+        <div className="App">
+            <Ingredients
+                ingredients={ingredients}
+            />
+        </div>
     );
 };
 
