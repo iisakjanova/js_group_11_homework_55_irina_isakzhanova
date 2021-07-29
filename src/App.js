@@ -4,7 +4,6 @@ import {nanoid} from "nanoid";
 import Ingredients from "./components/Ingredients/Ingredients";
 import './App.css'
 
-
 const App = () => {
     const [ingredients, setIngredients] = useState([
         {name: 'Meat', count: 0, id: nanoid(),},
