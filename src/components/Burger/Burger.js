@@ -1,5 +1,7 @@
 import {nanoid} from "nanoid";
 
+import {INGREDIENTS} from '../../constants.js';
+import {BASE_PRICE} from "../../constants.js";
 import React from 'react';
 import './Burger.css';
 import BreadTop from "../BreadTop/BreadTop";
@@ -8,6 +10,7 @@ import Salad from "../Salad/Salad";
 import Cheese from "../Cheese/Cheese";
 import Meat from "../Meat/Meat";
 import Bacon from "../Bacon/Bacon";
+import Price from "../Price";
 
 const Burger = props => {
     const getIngredientComponent = (name) => {
@@ -47,6 +50,12 @@ const Burger = props => {
         return stuffing;
     };
 
+    const getPrice = () => {
+        return props.ingredients.reduce((acc, ingredient) => {
+            return acc + ingredient.count * INGREDIENTS[ingredient.name].price;
+        }, BASE_PRICE);
+    };
+
     return (
         <div className="BurgerWrapper">
             <fieldset>
@@ -56,6 +65,9 @@ const Burger = props => {
                     {prepareIngredients()}
                     <BreadBottom />
                 </div>
+                <Price
+                    price={getPrice()}
+                />
             </fieldset>
         </div>
     );
