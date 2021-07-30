@@ -1,6 +1,7 @@
 import React from 'react';
 import {INGREDIENTS} from '../../constants.js';
 import '../Ingredient/Ingredient.css';
+import Buttons from "../Buttons/Buttons";
 
 const Ingredient = props => {
     return (
@@ -10,28 +11,12 @@ const Ingredient = props => {
             }}/>
             <p className="IngredientName">{props.ingredient.name}</p>
             <p className="IngredientQty">x{props.ingredient.count}</p>
-            <div className="Buttons">
-                <button
-                    className="Btn BtnDecrease"
-                    onClick={() => props.onDecrease(props.ingredient.id)}
-                    disabled={props.ingredient.count === 0}
-                >
-                    -
-                </button>
-                <button
-                    className="Btn BtnIncrease"
-                    onClick={() => props.onIncrease(props.ingredient.id)}
-                >
-                    +
-                </button>
-                <button
-                    className="Btn BtnRemove"
-                    onClick={() => props.onRemove(props.ingredient.id)}
-                    disabled={props.ingredient.count === 0}
-                >
-                    X
-                </button>
-            </div>
+            <Buttons
+                onDecrease={props.onDecrease}
+                onIncrease={props.onIncrease}
+                onRemove={props.onRemove}
+                ingredient={props.ingredient}
+            />
         </div>
     );
 };
